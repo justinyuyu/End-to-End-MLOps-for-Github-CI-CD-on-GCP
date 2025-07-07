@@ -6,11 +6,11 @@ on:
             - main
 
 env:
-    PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-    GKE_CLUSTER: "my-cluster"
+    PROJECT_ID: ${{ secrets.GCP }}
+    GKE_CLUSTER: "ci-cd"
     GKE_REGION: "us-central1"
     DEPLOYMENT_NAME: "mlops-app"
-    REPOSITORY: "us-central1-docker.pkg.dev/mlops-new-447207/my-repo"
+    REPOSITORY: "us-central1-docker.pkg.dev/erudite-realm-462404-b9/github"
     IMAGE: "us-central1-docker.pkg.dev/mlops-new-447207/my-repo/mlops-app"
 
 jobs:
@@ -27,7 +27,7 @@ jobs:
             - name: Authenticate with Google cloud
               uses: google-github-actions/auth@v1
               with:
-                credentials_json: ${{ secrets.GCP_SA_KEY }}
+                credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT }}
 
             - name: Configure GCloud
               run: |
